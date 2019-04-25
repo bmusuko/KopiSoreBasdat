@@ -3,14 +3,14 @@ CREATE TABLE Layanan (
     idLayanan VARCHAR(20) PRIMARY KEY,
     harga INT UNSIGNED NOT NULL,
     durasi INT UNSIGNED NOT NULL
-)
+);
 --Tabel DaftarLayanan
 CREATE TABLE DaftarLayanan (
     idKurir VARCHAR(20),
     idLayanan VARCHAR(20),
     FOREIGN KEY(idKurir) REFERENCES Kurir(idKurir) ,
     FOREIGN KEY(idLayanan) REFERENCES Layanan(idLayanan)
-)
+);
 --Tabel PenulisReview
 CREATE TABLE PenulisReview (
     idAkun VARCHAR(20),
@@ -21,7 +21,7 @@ CREATE TABLE PenulisReview (
     FOREIGN KEY(idCheckout) REFERENCES Checkout(idCheckout),
     FOREIGN KEY(idBarang) REFERENCES Barang(idBarang),
     FOREIGN KEY(idReview) REFERENCES IsiReview(idReview)
-)
+);
 --Isi Layanan
 INSERT INTO Layanan(idLayanan,harga,durasi)
 VALUES('0101',20000,5);
