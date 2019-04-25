@@ -9,6 +9,13 @@ CREATE TABLE IF NOT EXISTS Penjual(
     PRIMARY KEY (idAkun)
 );
 
+CREATE TABLE IF NOT EXISTS Layanan (
+    idLayanan VARCHAR(20),
+    harga INT UNSIGNED NOT NULL,
+    durasi INT UNSIGNED NOT NULL,
+    PRIMARY KEY(idLayanan)
+);
+
 CREATE TABLE IF NOT EXISTS Pembeli(
     idAkun VARCHAR(20),
     namaAkun VARCHAR(20),
@@ -111,6 +118,41 @@ CREATE TABLE IF NOT EXISTS Checkout (
 	PRIMARY KEY(idTransaksi,idCheckout),
 	FOREIGN KEY (idTransaksi) REFERENCES Transaksi(idTransaksi)
 );
+
+CREATE TABLE IF NOT EXISTS Membeli(
+	idAkun VARCHAR(20),
+	idTransaksi VARCHAR(20),
+	PRIMARY KEY(idAkun,idTransaksi),
+	FOREIGN KEY(idAkun) REFERENCES Pembeli(idAkun),
+	FOREIGN KEY(idTransaksi) REFERENCES Transaksi(idTransaksi)
+);
+
+CREATE TABLE IF NOT EXISTS DaftarLayanan (
+    idKurir VARCHAR(20),
+    idLayanan VARCHAR(20),
+    PRIMARY KEY(idKurir,idLayanan),
+    FOREIGN KEY(idKurir) REFERENCES Kurir(idKurir) ,
+    FOREIGN KEY(idLayanan) REFERENCES Layanan(idLayanan)
+);
+
+CREATE TABLE IF NOT EXISTS IsiReview (
+    idReview VARCHAR(20),
+    konten VARCHAR(100),
+    rating INT NOT NULL,
+    tanggalReview DATE NOT NULL,
+    PRIMARY KEY(idReview)
+);
+
+
+CREATE TABLE IF NOT EXISTS PenulisReview (
+    idAkun VARCHAR(20),
+    idCheckout VARCHAR(20),
+    idBarang VARCHAR(20),
+    idReview VARCHAR(20),
+    PRIMARY KEY(idAkun,idCheckout,idBarang)
+
+);
+
 
 INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, nomorRekening)
 VALUES('001','Andi','089906892131','fotoProfil 1','andi@gmail.com',100000, '1657789076589');
@@ -338,3 +380,118 @@ INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('007', '003');
 INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('008', '003');
 INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('009', '003');
 INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('010', '004');
+
+insert into Membeli values ("001","002");
+insert into Membeli values ("002","001");
+insert into Membeli values ("003","005");
+insert into Membeli values ("004","002");
+insert into Membeli values ("005","005");
+insert into Membeli values ("011","005");	
+insert into Membeli values ("012","001");
+insert into Membeli values ("013","008");	
+insert into Membeli values ("014","007");
+insert into Membeli values ("015","009");	
+
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0101',20000,5);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0102',40000,2);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0201',12000,8);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0202',50000,2);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0301',31000,4);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0401',10000,9);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0501',12000,7);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0601',11500,8);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0701',10500,7);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0801',16000,7);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0802',32000,1);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0901',1000,30);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('0902',2100,22);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('1001',3000,15);
+INSERT INTO Layanan(idLayanan,harga,durasi)
+VALUES('1002',9000,8);
+
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('001','0101');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('001','0102');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('002','0201');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('002','0202');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('003','0301');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('004','0401');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('005','0501');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('006','0601');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('007','0701');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('008','0801');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('008','0802');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('009','0901');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('009','0902');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('010','1001');
+INSERT INTO DaftarLayanan(idKurir,idLayanan)
+VALUES('010','1002');
+
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('001','Bagus, tapi gaada barangnya',5,'2019-11-12');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('002','Pengen warna hitam, tapi kepesen warna putih :(',45,'2019-02-03');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('003','Kerennn... Tas laptop harga cuman 5 juta, dapet bonus laptop',100,'2019-01-22');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('004','Diskonnya tambah dong...',95,'2019-11-02');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('005','Mantap, barang sudah diterima',100,'2018-11-12');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('006','...',80,'2018-11-12');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('007','Saya coba dulu ya',80,'2019-10-12');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('008','Makasiihhh...',90,'2019-01-12');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('009','Kereennn',100,'2018-04-16');
+INSERT INTO IsiReview(idReview,konten,rating,tanggalReview)
+VALUES('010','Saya pesen 1 kok kekirim 2 ??',80,'2018-11-01');
+
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('001','001','001','001');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('002','002','002','003');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('003','003','003','003');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('004','004','004','004');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('005','005','005','005');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('006','006','006','006');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('007','007','007','007');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('008','008','008','008');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('009','009','009','009');
+INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
+VALUES('010','010','010','010');
