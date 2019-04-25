@@ -64,8 +64,53 @@ CREATE TABLE IF NOT EXISTS TransaksiLine(
 	FOREIGN KEY(idBarang) REFERENCES Barang(idBarang)
 );
 
+CREATE TABLE IF NOT EXISTS Voucher(
+	kodeVoucher VARCHAR(20),
+	jenis VARCHAR(30) ,
+	masaBerlaku VARCHAR(20),
+    PRIMARY KEY(kodeVoucher)
+);
+
+CREATE TABLE IF NOT EXISTS Punya
+(
+    idAkun VARCHAR(20),
+    kodeVoucher VARCHAR(20) NOT NULL,
+    banyakVoucher INT(20) NOT NULL,
+    PRIMARY KEY(idAkun,kodeVoucher),
+    FOREIGN KEY(kodeVoucher) REFERENCES Voucher(kodeVoucher)
+);
+
+CREATE TABLE IF NOT EXISTS Kurir (
+	idKurir VARCHAR(20),
+	namaPerusahaan VARCHAR(20),
+	PRIMARY KEY (idKurir)
+);
+
+CREATE TABLE IF NOT EXISTS KerjaSama (
+	idAkun VARCHAR(20),
+	idKurir VARCHAR(20),
+	PRIMARY KEY (idAkun, idKurir),
+	FOREIGN KEY(idAkun) REFERENCES Penjual(idAkun),
+	FOREIGN KEY(idKurir) REFERENCES Kurir(idKurir)
+);
+
+CREATE TABLE IF NOT EXISTS Tulis (
+	idTransaksi VARCHAR(20),
+	idAkun VARCHAR(20),
+	PRIMARY KEY (idTransaksi, idAkun),
+	FOREIGN KEY (idTransaksi) REFERENCES Transaksi(idTransaksi),
+	FOREIGN KEY (idAkun) REFERENCES Pembeli(idAkun)
+);
 
 
+CREATE TABLE IF NOT EXISTS Checkout (
+	idTransaksi VARCHAR(20),
+	idCheckout VARCHAR(20),
+	nominal INT,
+	metode VARCHAR(20),
+	PRIMARY KEY(idTransaksi,idCheckout),
+	FOREIGN KEY (idTransaksi) REFERENCES Transaksi(idTransaksi)
+);
 
 INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, nomorRekening)
 VALUES('001','Andi','089906892131','fotoProfil 1','andi@gmail.com',100000, '1657789076589');
@@ -222,3 +267,74 @@ insert into TransaksiLine values ('004', 1, 5, '001');
 insert into TransaksiLine values ('004', 2, 1, '005');
 insert into TransaksiLine values ('005', 1, 4, '003');
 insert into TransaksiLine values ('005', 2, 1, '008');	
+
+INSERT INTO Voucher (kodeVoucher, jenis, masaBerlaku)
+VALUES
+( "001", "OJEK", 3 ),
+( "002", "PesawatTerbang", 4 ),
+( "003", "KeretaApi", 5 ),
+( "004", "OVO", 6 ),
+( "005", "GOPAY", 7 ),
+( "006", "DANA", 8 ),
+( "007", 'TOKPED', 9 ),
+( "008", "GOJEK", 3 ),
+( "009", "GRAB", 4 ),
+( "010", "NGANGKOT", 10 );
+
+
+INSERT INTO Punya ( idAkun, kodeVoucher, banyakVoucher)
+VALUES
+( "001","001", 3 ),
+("002", "002", 4 ),
+("003", "003", 5),
+("004", "004", 6),
+("005", "005",7),
+("006", "006",8),
+("007", "007",9),
+("008", "008", 10),
+("009", "009", 11),
+("010", "010", 12);
+
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('001', 'Valent Express');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('002', 'Fast Fatt');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('003', 'Brum Brum Bram');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('004', 'GDE');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('005', 'Hilmi Post');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('006', 'Putux');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('007', 'Tikki');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('008', 'JME');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('009', 'GO-LENT');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('010', 'MustGO Post');
+
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('001', '001', 70080, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('002', '001', 65077, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('003', '001', 25022, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('004', '001', 599701, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('005', '001', 30090, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('006', '001', 75041, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('007', '001', 200122, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('008', '001', 200056, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('009', '001', 50102, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('010', '001', 98574, 'Transfer');
+
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '002');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '006');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '009');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('hilminaufal', '005');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('hilminaufal', '003');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('brammusuko', '003');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('fattahillahi', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('putugde', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('putugde', '004');
+
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('001', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('002', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('003', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('004', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('005', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('006', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('007', 'putugde');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('008', 'putugde');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('009', 'hilminaufal');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('010', 'hilminaufal');
