@@ -1,0 +1,77 @@
+-- Kurir
+CREATE TABLE Kurir (
+	idKurir VARCHAR(20) PRIMARY KEY,
+	namaPerusahaan VARCHAR(20)
+);
+
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('001', 'Valent Express');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('002', 'Fast Fatt');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('003', 'Brum Brum Bram');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('004', 'GDE');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('005', 'Hilmi Post');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('006', 'Putux');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('007', 'Tikki');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('008', 'JME');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('009', 'GO-LENT');
+INSERT INTO Kurir (idKurir, namaPerusahaan) VALUES ('010', 'MustGO Post');
+
+
+
+
+-- KerjaSama
+CREATE TABLE KerjaSama (
+	idAkun VARCHAR(20),
+	idKurir VARCHAR(20),
+	PRIMARY KEY (idAkun, idKurir)
+);
+
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '002');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '006');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('abangcakeep', '009');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('hilminaufal', '005');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('hilminaufal', '003');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('brammusuko', '003');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('fattahillahi', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('putugde', '001');
+INSERT INTO KerjaSama (idAkun, idKurir) VALUES ('putugde', '004');
+
+
+
+-- Tulis 
+CREATE TABLE Tulis (
+	idTransaksi VARCHAR(20),
+	idAkun VARCHAR(20),
+	PRIMARY KEY (idTransaksi, idAkun)
+);
+
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('001', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('002', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('003', 'abangcakeep');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('004', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('005', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('006', 'brammusuko');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('007', 'putugde');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('008', 'putugde');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('009', 'hilminaufal');
+INSERT INTO Tulis (idTransaksi, idAkun) VALUES ('010', 'hilminaufal');
+
+-- Checkout
+CREATE TABLE Checkout (
+	idTransaksi VARCHAR(20) PRIMARY KEY,
+	idCheckout VARCHAR(20) PRIMARY KEY,
+	nominal INT,
+	metode VARCHAR(20);
+);
+
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('001', '001', 70080, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('002', '001', 65077, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('003', '001', 25022, 'Debit');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('004', '001', 599701, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('005', '001', 30090, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('006', '001', 75041, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('007', '001', 200122, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('008', '001', 200056, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('009', '001', 50102, 'Transfer');
+INSERT INTO Checkout (idTransaksi, idCheckout, nominal, metode) VALUES ('010', '001', 98574, 'Transfer');
+
