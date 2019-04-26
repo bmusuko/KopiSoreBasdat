@@ -160,6 +160,97 @@ CREATE TABLE IF NOT EXISTS PenulisReview (
 );
 
 
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, nomorRekening)
+VALUES('001','Andi','089906892131','fotoProfil 1','andi@gmail.com', '1657789076589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, nomorRekening)
+VALUES('002','Budi','089906849231','fotoProfil 2','budi@gmail.com', '1657815376589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('003','Charlie','084283692131','fotoProfil 3','charlie@gmail.com', '1659785376589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('004','Dodi','084282341131','fotoProfil 4','dodi@gmail.com', '1657814561589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('005','Eko','089956482131','fotoProfil 5','eko@gmail.com', '1657788754589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('006','Firdaus','082506849231','fotoProfil 6','firdaus@gmail.com', '1657774544589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('007','Gandhi','086326892131','fotoProfil 7','gandhi@gmail.com', '3321774544589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('008','Hamish','085906849231','fotoProfil 8','hamish@gmail.com', '1747415376589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('009','Irwan','082306892131','fotoProfil 9','irwan@gmail.com', '1694589076589');
+
+INSERT INTO Penjual(idAkun, namaAkun, nomorTelp, fotoProfil, eMail,  nomorRekening)
+VALUES('010','Jamal','085684849231','fotoProfil 10','jamal@gmail.com', '1657815762889');
+
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('001','Andi','089906892131','fotoProfil 1','andi@gmail.com',100000, '20000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('002','Budi','089906849231','fotoProfil 2','budi@gmail.com',782100, '25000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('003','Charlie','084283692131','fotoProfil 3','charlie@gmail.com',500000, '23000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('004','Dodi','084282341131','fotoProfil 4','dodi@gmail.com',750100, '12322','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('005','Eko','089956482131','fotoProfil 5','eko@gmail.com',250000, '9000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('011','Bryan','089956758641','fotoProfil 11','bryan@gmail.com',1002000, '20000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('012','Valent','089906745891','fotoProfil 12','valent@gmail.com',7812100, '12300','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('013','Fata','089514592131','fotoProfil 13','fata@gmail.com',5785000, '2000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('014','Hilmi','084287825631','fotoProfil 14','hilmi@gmail.com',740100, '12022','K Y Plaza ( 4th Floor), 191','Rumah');
+
+INSERT INTO Pembeli(idAkun, namaAkun, nomorTelp, fotoProfil, eMail, wallet, poin, namaAlamat, detailAlamat)
+VALUES('015','Bram','087542882131','fotoProfil 15','bram@gmail.com',295470, '9000','K Y Plaza ( 4th Floor), 191','Rumah');
+
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('001','K Y Plaza ( 4th Floor), 191','Rumah', 100000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('002','Jl Jend A Yani 262 RT 02/02','Kosan', 54200);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('003','Jl Jend A Yani 269 Pav','Kantor', 250000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('004','Jl Babakan Tarogong 244 B','Rumah', 35000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('005','822/4 Begum Rokeya Sarani','Toko', 15000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('006','Jl Salemba Tgh 39-BB 10440','Toko', 50000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('007','JL.Pentaran No.9 Proklamasi, Jakarta Pusat 10320','Rumah', 15000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('008','Jl WR Supratman 88, Jawa Barat','Rumah', 30000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('009','Uday Chand Building 7','Ruko', 10000);
+
+INSERT INTO PenjualAW(idAkun, namaAlamat, detailAlamat, wallet)
+VALUES('010','Jl. Swadaya IV No4 Kel. Rawa Terate Cakung, Jakarta Timur, Jakarta Timur','Rukan', 33000);
 
 
 insert into Transaksi values ('001', "2019-04-21", '010', 'sangkuriang');
@@ -379,4 +470,4 @@ VALUES('008','008','008','008');
 INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
 VALUES('009','009','009','009');
 INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
-VALUES('010','010','010','010');
+VALUES('010','010','010','010'); 
