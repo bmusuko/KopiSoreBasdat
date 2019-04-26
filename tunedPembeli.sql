@@ -1,5 +1,5 @@
 
--- Pembeli gabung alamat
+
 CREATE TABLE IF NOT EXISTS Pembeli(
     idAkun VARCHAR(20),
     namaAkun VARCHAR(20),
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Pembeli(
     PRIMARY KEY (idAkun)
 );
 
--- alamat dan wallet penjual
+
 CREATE TABLE IF NOT EXISTS PenjualAW(
     idAkun VARCHAR(20),
     namaAlamat VARCHAR(150),
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS PenjualAW(
     PRIMARY KEY (idAkun)
 );
 
--- Sisa data lain dari penjual
+
 CREATE TABLE IF NOT EXISTS Penjual(
 	idAkun VARCHAR(20),
     namaAkun VARCHAR(20),
@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS Barang(
 	stok INT,
 	deskripsi VARCHAR(50),
 	fotoBarang VARCHAR(20),
-	PRIMARY KEY(idBarang),
-	FOREIGN KEY (idAkun) REFERENCES Penjual(idAkun)
+	PRIMARY KEY(idBarang)
+	
 );
 
 CREATE TABLE IF NOT EXISTS TransaksiLine(
@@ -67,9 +67,8 @@ CREATE TABLE IF NOT EXISTS TransaksiLine(
 	nomorBaris INT,
 	jumlahBarang INT,
 	idBarang VARCHAR(20),
-	primary key(idTransaksi,nomorBaris),
-	FOREIGN KEY(idTransaksi) REFERENCES Transaksi(idTransaksi),
-	FOREIGN KEY(idBarang) REFERENCES Barang(idBarang)
+	primary key(idTransaksi,nomorBaris)
+	
 );
 
 
@@ -85,8 +84,7 @@ CREATE TABLE IF NOT EXISTS Punya
     idAkun VARCHAR(20),
     kodeVoucher VARCHAR(20) NOT NULL,
     banyakVoucher INT(20) NOT NULL,
-    PRIMARY KEY(idAkun,kodeVoucher),
-    FOREIGN KEY(kodeVoucher) REFERENCES Voucher(kodeVoucher)
+    PRIMARY KEY(idAkun,kodeVoucher)
 );
 
 CREATE TABLE IF NOT EXISTS Kurir (
@@ -99,18 +97,14 @@ CREATE TABLE IF NOT EXISTS Kurir (
 CREATE TABLE IF NOT EXISTS KerjaSama (
 	idAkun VARCHAR(20),
 	idKurir VARCHAR(20),
-	PRIMARY KEY (idAkun, idKurir),
-	FOREIGN KEY(idAkun) REFERENCES Penjual(idAkun),
-	FOREIGN KEY(idKurir) REFERENCES Kurir(idKurir)
+	PRIMARY KEY (idAkun, idKurir)
 );
 
 
 CREATE TABLE IF NOT EXISTS Tulis (
 	idTransaksi VARCHAR(20),
 	idAkun VARCHAR(20),
-	PRIMARY KEY (idTransaksi, idAkun),
-	FOREIGN KEY (idTransaksi) REFERENCES Transaksi(idTransaksi),
-	FOREIGN KEY (idAkun) REFERENCES Pembeli(idAkun)
+	PRIMARY KEY (idTransaksi, idAkun)
 );
 
 
@@ -119,25 +113,20 @@ CREATE TABLE IF NOT EXISTS Checkout (
 	idCheckout VARCHAR(20),
 	nominal INT,
 	metode VARCHAR(20),
-	PRIMARY KEY(idTransaksi,idCheckout),
-	FOREIGN KEY (idTransaksi) REFERENCES Transaksi(idTransaksi)
+	PRIMARY KEY(idTransaksi,idCheckout)
 );
 
 
 CREATE TABLE IF NOT EXISTS Membeli(
 	idAkun VARCHAR(20),
 	idTransaksi VARCHAR(20),
-	PRIMARY KEY(idAkun,idTransaksi),
-	FOREIGN KEY(idAkun) REFERENCES Pembeli(idAkun),
-	FOREIGN KEY(idTransaksi) REFERENCES Transaksi(idTransaksi)
+	PRIMARY KEY(idAkun,idTransaksi)
 );
 
 CREATE TABLE IF NOT EXISTS DaftarLayanan (
     idKurir VARCHAR(20),
     idLayanan VARCHAR(20),
-    PRIMARY KEY(idKurir,idLayanan),
-    FOREIGN KEY(idKurir) REFERENCES Kurir(idKurir) ,
-    FOREIGN KEY(idLayanan) REFERENCES Layanan(idLayanan)
+    PRIMARY KEY(idKurir,idLayanan)
 );
 
 
@@ -471,3 +460,13 @@ INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
 VALUES('009','009','009','009');
 INSERT INTO PenulisReview(idAkun,idCheckout,idBarang,idReview)
 VALUES('010','010','010','010'); 
+
+
+
+
+
+ALTER TABLE Pembeli ADD INDEX (namaAkun);
+ALTER TABLE PenjualAW ADD INDEX (namaAlamat);
+ALTER TABLE Penjual ADD INDEX (namaAkun);
+ALTER TABLE Penjual ADD INDEX (nomorTelp);
+ALTER TABLE Penjual ADD INDEX (eMail);
