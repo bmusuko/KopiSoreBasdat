@@ -1,0 +1,5 @@
+ALTER TABLE Pembeli ADD INDEX (namaAkun);
+ALTER TABLE PenjualAW ADD INDEX (namaAlamat);
+ALTER TABLE Penjual ADD INDEX (namaAkun);
+ALTER TABLE Penjual ADD INDEX (nomorTelp);
+ALTER TABLE Penjual ADD INDEX (eMail);
